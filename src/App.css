@@ -1,0 +1,63 @@
+:root {
+  --pink: #FF69B4;
+  --gold: #D4AF37;
+  --dark: #2D3436;
+}
+
+.birthday-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top right, #fff5f8, #ffffff);
+  padding: 40px 10%;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 5rem;
+  color: var(--dark);
+  margin: 20px 0;
+}
+
+.highlight {
+  color: var(--pink);
+  background: linear-gradient(to right, #FF69B4, #FFB6C1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 105, 180, 0.1);
+  color: var(--pink);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.glass-form {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 105, 180, 0.2);
+  padding: 40px;
+  border-radius: 24px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.btn-glow {
+  background: var(--pink);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+}
