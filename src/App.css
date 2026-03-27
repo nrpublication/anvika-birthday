@@ -2,35 +2,33 @@
   overflow-x: hidden;
 }
 
-/* 1. HERO PREMIUM SECTION */
-.hero-premium {
+/* 1. HERO MERMAID SECTION */
+.hero-mermaid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   padding: 140px 10%;
   align-items: center;
   position: relative;
   min-height: 90vh;
-  background: radial-gradient(circle at 70% 30%, #fff0f5 0%, #ffffff 60%);
+  /* Watercolor effect from the invitation card */
+  background: url('src/assets/watercolor-hero-bg.jpg') no-repeat center center/cover;
 }
 
-.bg-grid-blurry {
+.water-overlay {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background-image: radial-gradient(#FFB6C1 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: 0.15;
-  filter: blur(1px);
-  z-index: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(235, 253, 255, 0.6) 0%, rgba(255, 255, 255, 0) 60%);
+  z-index: 1;
 }
 
 .hero-content {
   z-index: 2;
 }
 
-.energetic-badge {
+.energetic-badge-purple {
   display: inline-block;
-  background: rgba(255, 20, 147, 0.08);
-  color: var(--pink-primary);
+  background: rgba(138, 79, 255, 0.08);
+  color: var(--purple-accent);
   padding: 10px 24px;
   border-radius: 50px;
   font-weight: 700;
@@ -41,22 +39,32 @@
 }
 
 .hero-content h1 {
-  font-size: 5.5rem;
+  font-size: 5rem;
   line-height: 1;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.highlight-gauri {
+  color: var(--teal-primary);
+}
+
+.mermaid-subtitle {
+  font-size: 3rem;
   color: var(--text-dark);
   margin-bottom: 24px;
 }
 
-.gradient-text-gold {
-  background: linear-gradient(135deg, #FF69B4, #D4AF37);
+.purple-gradient-text {
+  background: linear-gradient(135deg, var(--purple-accent), var(--teal-primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--text-light);
-  max-width: 700px;
+  max-width: 650px;
   line-height: 1.6;
   margin-bottom: 50px;
 }
@@ -66,29 +74,29 @@
   gap: 20px;
 }
 
-.btn-glow-pink, .btn-solid-pink {
-  background: var(--pink-primary);
+.btn-glow-purple {
+  background: var(--purple-accent);
   color: white;
   padding: 18px 36px;
   border: none;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.2);
+  box-shadow: 0 10px 20px rgba(138, 79, 255, 0.2);
   transition: var(--transition);
   display: flex; gap: 10px; align-items: center;
 }
 
-.btn-glow-pink:hover, .btn-solid-pink:hover {
+.btn-glow-purple:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(255, 20, 147, 0.3);
+  box-shadow: 0 15px 30px rgba(138, 79, 255, 0.3);
 }
 
-.btn-outline-gold {
+.btn-outline-teal {
   background: transparent;
-  color: var(--gold);
+  color: var(--teal-primary);
   padding: 18px 36px;
-  border: 2px solid var(--gold);
+  border: 2px solid var(--teal-primary);
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
@@ -96,32 +104,23 @@
   display: flex; gap: 10px; align-items: center;
 }
 
-.btn-outline-gold:hover {
-  background: rgba(212, 175, 55, 0.05);
+.btn-outline-teal:hover {
+  background: rgba(21, 156, 152, 0.05);
 }
 
-.hero-visual-floating {
+.hero-visual-mermaid {
   position: relative;
   height: 400px;
 }
 
-.blob {
+.mermaid-tail-abstract {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.3;
-}
-
-.pink-blob {
-  width: 300px; height: 300px;
-  background-color: var(--pink-light);
+  width: 350px; height: 350px;
+  background: linear-gradient(135deg, rgba(138, 79, 255, 0.1), rgba(21, 156, 152, 0.1));
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   top: 10%; right: 0;
-}
-
-.gold-blob {
-  width: 200px; height: 200px;
-  background-color: var(--gold);
-  bottom: 10%; right: 100px;
+  z-index: 1;
+  filter: blur(2px);
 }
 
 .floating-card {
@@ -131,48 +130,99 @@
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   font-weight: 700;
-  color: var(--pink-primary);
-  border: 1px solid rgba(255, 105, 180, 0.1);
+  color: var(--purple-accent);
+  border: 1px solid rgba(138, 79, 255, 0.1);
   animation: float 5s infinite ease-in-out;
+  z-index: 2;
 }
 
-.c1 { top: 20%; left: -30px; animation-delay: 0.5s; }
-.c2 { bottom: 20%; right: 0; animation-delay: 1s; }
+.c1 { top: 30%; left: -30px; animation-delay: 0.5s; }
+.c2 { bottom: 20%; right: 20px; animation-delay: 1s; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
 }
 
-/* 2. INTERACTION ZONE (Glassmorphism Forms & Wishes) */
-.interaction-zone {
+/* 2. EVENT DETAILS SECTION (Premium Glassmorphism) */
+.event-details-section {
   padding: 100px 10%;
-  background-color: #fdfafb;
+  background-color: #f6fcff;
+}
+
+.section-header-mermaid {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.section-header-mermaid h2 {
+  font-size: 3rem;
+  color: var(--teal-primary);
+  margin-bottom: 16px;
+}
+
+.section-header-mermaid p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+.details-grid-premium {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.detail-card-glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(21, 156, 152, 0.15);
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.detail-card-glass:hover {
+  border-color: var(--purple-accent);
+  box-shadow: 0 15px 40px rgba(138, 79, 255, 0.1);
+}
+
+.detail-icon {
+  color: var(--shell-pink);
+  margin-bottom: 24px;
+}
+
+.detail-card-glass h3 {
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.detail-card-glass p {
+  color: var(--text-light);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* 3. INTERACTION ZONE (Mermaid Form & Wishes) */
+.interaction-zone-mermaid {
+  padding: 100px 10%;
+  background-color: #ffffff;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   gap: 80px;
   align-items: start;
 }
 
-.card-glass-effect {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
+.wish-form-card-glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(21, 156, 152, 0.1);
   padding: 50px;
   border-radius: 24px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-}
-
-.wish-form-card h3 {
-  font-size: 2.2rem;
-  color: var(--text-dark);
-  margin-bottom: 15px;
-}
-
-.wish-form-card p {
-  color: var(--text-light);
-  margin-bottom: 30px;
-  line-height: 1.6;
 }
 
 .input-group {
@@ -191,23 +241,26 @@
 
 .input-group input:focus, .input-group textarea:focus {
   outline: none;
-  border-color: var(--pink-primary);
-  box-shadow: 0 0 10px rgba(255, 20, 147, 0.1);
+  border-color: var(--teal-primary);
 }
 
-.btn-solid-pink {
+.btn-solid-teal {
+  background: var(--teal-primary);
+  color: white;
+  padding: 18px 36px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
   width: 100%;
+  cursor: pointer;
   justify-content: center;
+  display: flex; gap: 10px; align-items: center;
 }
 
-/* WISHES WALL PREMIUM */
-.wishes-wall .section-header {
+/* WISHES WALL MERMAID */
+.wishes-wall-mermaid .section-header-mermaid {
+  text-align: left;
   margin-bottom: 50px;
-}
-
-.wishes-wall h2 {
-  font-size: 3rem;
-  color: var(--pink-primary);
 }
 
 .wishes-grid {
@@ -216,63 +269,31 @@
   gap: 30px;
 }
 
-.wish-card-premium {
+.wish-card-mermaid {
   background: white;
   padding: 30px;
   border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  transition: var(--transition);
+  border: 1px solid rgba(138, 79, 255, 0.1);
   position: relative;
-  overflow: hidden;
-}
-
-.wish-card-premium:hover {
-  transform: translateY(-5px);
-  border-color: var(--pink-primary);
-  box-shadow: 0 10px 30px rgba(255, 20, 147, 0.05);
-}
-
-.wish-card-premium::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 4px; height: 100%;
-  background: linear-gradient(to bottom, var(--pink-primary), var(--pink-light));
-  opacity: 0.1;
   transition: var(--transition);
 }
 
-.wish-card-premium:hover::before {
-  opacity: 1;
+.wish-star {
+  position: absolute;
+  top: 15px; right: 15px;
 }
 
-.wish-icon {
-  margin-bottom: 20px;
-  color: var(--pink-light);
-}
-
-.wish-card-premium p {
+.wish-card-mermaid p {
   color: var(--text-dark);
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 20px;
-  font-style: italic;
 }
 
 .wish-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
   padding-top: 15px;
   border-top: 1px solid #f3f4f6;
-}
-
-.wisher-name {
-  font-weight: 700;
-  color: var(--text-dark);
-}
-
-.wish-date {
-  font-size: 0.8rem;
-  color: var(--text-light);
 }
