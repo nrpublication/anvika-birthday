@@ -4,11 +4,13 @@ import { Heart, Star, Cake, Send, MapPin, Clock, Calendar } from 'lucide-react'
 import { supabase } from './lib/supabaseClient'
 import './App.css'
 
+// Aapki photo yahan import ho rahi hai
+import anvikaImg from './assets/anvika.jpg'
+
 function App() {
   const [wishes, setWishes] = useState([])
   const [loading, setLoading] = useState(true)
 
-  // Database se blessings fetch karne ka logic
   useEffect(() => {
     fetchWishes()
   }, [])
@@ -22,7 +24,6 @@ function App() {
     setLoading(false);
   }
 
-  // Blessing submit karne ka logic
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;
@@ -34,14 +35,12 @@ function App() {
       alert("Blessing Sent to Gauri! ❤️");
       e.target.reset();
       fetchWishes();
-    } else {
-      alert("Error: " + error.message);
     }
   }
 
   return (
     <div className="birthday-container">
-      {/* SECTION 1: HERO - Invitation Look */}
+      {/* HERO SECTION */}
       <section className="hero-mermaid">
         <motion.div 
           initial={{ x: -50, opacity: 0 }}
@@ -51,11 +50,13 @@ function App() {
         >
           <span className="energetic-badge">Our Princess is Turning One!</span>
           <h1 className="main-title">Anvika <br/><span className="gradient-text">(Gauri)</span></h1>
+          
           <div className="event-info-box">
-            <p><Calendar size={18} /> 30th March, 2026 (Monday)</p>
-            <p><Clock size={18} /> 07:00 PM Onwards</p>
-            <p><MapPin size={18} /> Anokhi Veg Restaurant, Tonk Road, Jaipur</p>
+            <p><Calendar size={20} /> 30th March, 2026 (Monday)</p>
+            <p><Clock size={20} /> 07:00 PM Onwards</p>
+            <p><MapPin size={20} /> Anokhi Veg Restaurant, Jaipur</p>
           </div>
+
           <button className="btn-premium" onClick={() => document.getElementById('wish-form').scrollIntoView({behavior: 'smooth'})}>
             Send a Blessing ❤️
           </button>
@@ -68,21 +69,21 @@ function App() {
           className="photo-frame-container"
         >
           <div className="glowing-circle">
-            {/* Jab aap photo src/assets me daal denge to yahan path badal dena */}
-            <img src="https://via.placeholder.com/400?text=Gauri+Photo" alt="Anvika Gauri" />
+            {/* Ab yahan anvika.jpg dikhegi */}
+            <img src={anvikaImg} alt="Anvika Gauri" />
           </div>
           <motion.div animate={{ y: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="floating-badge b1">🎂 30 March</motion.div>
           <motion.div animate={{ y: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 5 }} className="floating-badge b2">📍 Jaipur</motion.div>
         </motion.div>
       </section>
 
-      {/* SECTION 2: WISH FORM */}
+      {/* INTERACTION ZONE */}
       <section id="wish-form" className="interaction-zone">
         <div className="wish-form-card">
           <h3>Blessings for Gauri</h3>
           <p>Your love is her best gift! Write a message for her special day.</p>
           <form onSubmit={handleSubmit} className="form-layout">
-            <input type="text" placeholder="Your Name (e.g. Chacha ji)" required className="input-field" />
+            <input type="text" placeholder="Your Name" required className="input-field" />
             <textarea placeholder="Write your heartfelt blessing..." required rows="4" className="input-field"></textarea>
             <button type="submit" className="btn-solid">
               Send Love <Heart size={18} fill="white"/>
@@ -90,7 +91,6 @@ function App() {
           </form>
         </div>
 
-        {/* SECTION 3: WISHES WALL */}
         <div className="wishes-wall">
           <h2 className="section-title">Wishes Wall</h2>
           {loading ? (
