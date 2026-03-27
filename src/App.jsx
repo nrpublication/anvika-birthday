@@ -119,7 +119,7 @@ function App() {
       </section>
 
       <footer className="footer">
-        <p>Created with ❤️ by Papa | anvikajoshi.com</p>
+        <p>Created with ❤️  | anvikajoshi.com</p>
       </footer>
     </div>
   )
