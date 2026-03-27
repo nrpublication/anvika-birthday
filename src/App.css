@@ -1,63 +1,278 @@
-:root {
-  --pink: #FF69B4;
-  --gold: #D4AF37;
-  --dark: #2D3436;
-}
-
 .birthday-container {
-  min-height: 100vh;
-  background: radial-gradient(circle at top right, #fff5f8, #ffffff);
-  padding: 40px 10%;
-  font-family: 'Inter', sans-serif;
-  text-align: center;
+  overflow-x: hidden;
 }
 
-.hero h1 {
-  font-size: 5rem;
-  color: var(--dark);
-  margin: 20px 0;
+/* 1. HERO PREMIUM SECTION */
+.hero-premium {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  padding: 140px 10%;
+  align-items: center;
+  position: relative;
+  min-height: 90vh;
+  background: radial-gradient(circle at 70% 30%, #fff0f5 0%, #ffffff 60%);
 }
 
-.highlight {
-  color: var(--pink);
-  background: linear-gradient(to right, #FF69B4, #FFB6C1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.bg-grid-blurry {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(#FFB6C1 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.15;
+  filter: blur(1px);
+  z-index: 0;
 }
 
-.badge {
+.hero-content {
+  z-index: 2;
+}
+
+.energetic-badge {
   display: inline-block;
-  background: rgba(255, 105, 180, 0.1);
-  color: var(--pink);
-  padding: 8px 20px;
+  background: rgba(255, 20, 147, 0.08);
+  color: var(--pink-primary);
+  padding: 10px 24px;
   border-radius: 50px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
 }
 
-.glass-form {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 105, 180, 0.2);
-  padding: 40px;
-  border-radius: 24px;
-  max-width: 500px;
-  margin: 40px auto;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+.hero-content h1 {
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--text-dark);
+  margin-bottom: 24px;
 }
 
-.btn-glow {
-  background: var(--pink);
+.gradient-text-gold {
+  background: linear-gradient(135deg, #FF69B4, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.4rem;
+  color: var(--text-light);
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 50px;
+}
+
+.cta-group {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-glow-pink, .btn-solid-pink {
+  background: var(--pink-primary);
   color: white;
+  padding: 18px 36px;
   border: none;
-  padding: 15px 30px;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(255, 20, 147, 0.2);
+  transition: var(--transition);
+  display: flex; gap: 10px; align-items: center;
+}
+
+.btn-glow-pink:hover, .btn-solid-pink:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(255, 20, 147, 0.3);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold);
+  padding: 18px 36px;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex; gap: 10px; align-items: center;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.hero-visual-floating {
+  position: relative;
+  height: 400px;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+}
+
+.pink-blob {
+  width: 300px; height: 300px;
+  background-color: var(--pink-light);
+  top: 10%; right: 0;
+}
+
+.gold-blob {
+  width: 200px; height: 200px;
+  background-color: var(--gold);
+  bottom: 10%; right: 100px;
+}
+
+.floating-card {
+  position: absolute;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  font-weight: 700;
+  color: var(--pink-primary);
+  border: 1px solid rgba(255, 105, 180, 0.1);
+  animation: float 5s infinite ease-in-out;
+}
+
+.c1 { top: 20%; left: -30px; animation-delay: 0.5s; }
+.c2 { bottom: 20%; right: 0; animation-delay: 1s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* 2. INTERACTION ZONE (Glassmorphism Forms & Wishes) */
+.interaction-zone {
+  padding: 100px 10%;
+  background-color: #fdfafb;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.card-glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+.wish-form-card h3 {
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.wish-form-card p {
+  color: var(--text-light);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group input, .input-group textarea {
+  width: 100%;
+  padding: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  transition: var(--transition);
+}
+
+.input-group input:focus, .input-group textarea:focus {
+  outline: none;
+  border-color: var(--pink-primary);
+  box-shadow: 0 0 10px rgba(255, 20, 147, 0.1);
+}
+
+.btn-solid-pink {
+  width: 100%;
+  justify-content: center;
+}
+
+/* WISHES WALL PREMIUM */
+.wishes-wall .section-header {
+  margin-bottom: 50px;
+}
+
+.wishes-wall h2 {
+  font-size: 3rem;
+  color: var(--pink-primary);
+}
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.wish-card-premium {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.wish-card-premium:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink-primary);
+  box-shadow: 0 10px 30px rgba(255, 20, 147, 0.05);
+}
+
+.wish-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 4px; height: 100%;
+  background: linear-gradient(to bottom, var(--pink-primary), var(--pink-light));
+  opacity: 0.1;
+  transition: var(--transition);
+}
+
+.wish-card-premium:hover::before {
+  opacity: 1;
+}
+
+.wish-icon {
+  margin-bottom: 20px;
+  color: var(--pink-light);
+}
+
+.wish-card-premium p {
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.wish-footer {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin: 20px auto;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.wisher-name {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.wish-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
 }
