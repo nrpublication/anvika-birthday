@@ -8,6 +8,7 @@ function App() {
   const [wishes, setWishes] = useState([])
   const [loading, setLoading] = useState(true)
 
+  // Database se blessings fetch karne ka logic
   useEffect(() => {
     fetchWishes()
   }, [])
@@ -21,110 +22,90 @@ function App() {
     setLoading(false);
   }
 
+  // Blessing submit karne ka logic
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target[0].value;
     const message = e.target[1].value;
+    
     const { error } = await supabase.from('wishes').insert([{ name, message }]);
+    
     if (!error) {
+      alert("Blessing Sent to Gauri! ❤️");
       e.target.reset();
       fetchWishes();
+    } else {
+      alert("Error: " + error.message);
     }
   }
 
   return (
     <div className="birthday-container">
-      {/* 1. HERO SECTION - Mermaid Theme */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="hero-mermaid"
-      >
-        <div className="hero-content">
-          <motion.span 
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="energetic-badge-purple"
-          >
-            Join Us to Celebrate!
-          </motion.span>
-          <h1>Anvika <span className="highlight-gauri">(Gauri)</span></h1>
-          <h2 className="mermaid-subtitle">
-            <span className="purple-gradient-text">1st Birthday</span> Bash
-          </h2>
-          <p>Her first steps and first laughter have filled our lives with joy. 
-             Come, make Gauri's big day even more special!</p>
-          
-          <div className="cta-group">
-            <button className="btn-glow-purple">Send Blessing <Heart size={18}/></button>
+      {/* SECTION 1: HERO - Invitation Look */}
+      <section className="hero-mermaid">
+        <motion.div 
+          initial={{ x: -50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="hero-content"
+        >
+          <span className="energetic-badge">Our Princess is Turning One!</span>
+          <h1 className="main-title">Anvika <br/><span className="gradient-text">(Gauri)</span></h1>
+          <div className="event-info-box">
+            <p><Calendar size={18} /> 30th March, 2026 (Monday)</p>
+            <p><Clock size={18} /> 07:00 PM Onwards</p>
+            <p><MapPin size={18} /> Anokhi Veg Restaurant, Tonk Road, Jaipur</p>
           </div>
-        </div>
-        
-        <div className="hero-visual-mermaid">
-          <motion.div 
-            animate={{ y: [-10, 10, -10] }} 
-            transition={{ duration: 6, repeat: Infinity }} 
-            className="mermaid-tail-abstract"
-          ></motion.div>
-          <div className="floating-card c1">30 March</div>
-          <div className="floating-card c2">Jaipur</div>
-        </div>
-      </motion.section>
+          <button className="btn-premium" onClick={() => document.getElementById('wish-form').scrollIntoView({behavior: 'smooth'})}>
+            Send a Blessing ❤️
+          </button>
+        </motion.div>
 
-      {/* 2. EVENT DETAILS - Invitation Info */}
-      <section className="event-details-section">
-        <div className="section-header-mermaid">
-          <h2>The Grand Celebration</h2>
-        </div>
-        <div className="details-grid-premium">
-          <div className="detail-card-glass">
-            <Calendar size={36} className="detail-icon" />
-            <h3>30 March, 2026</h3>
-            <p>Monday</p>
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="photo-frame-container"
+        >
+          <div className="glowing-circle">
+            {/* Jab aap photo src/assets me daal denge to yahan path badal dena */}
+            <img src="https://via.placeholder.com/400?text=Gauri+Photo" alt="Anvika Gauri" />
           </div>
-          <div className="detail-card-glass">
-            <Clock size={36} className="detail-icon" />
-            <h3>07:00 PM</h3>
-            <p>Celebration Starts</p>
-          </div>
-          <div className="detail-card-glass">
-            <MapPin size={36} className="detail-icon" />
-            <h3>Anokhi Veg Restaurant</h3>
-            <p>Tonk Road, Jaipur</p>
-          </div>
-        </div>
+          <motion.div animate={{ y: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="floating-badge b1">🎂 30 March</motion.div>
+          <motion.div animate={{ y: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 5 }} className="floating-badge b2">📍 Jaipur</motion.div>
+        </motion.div>
       </section>
 
-      {/* 3. WISHES SECTION */}
-      <section className="interaction-zone-mermaid">
-        <div className="wish-form-card-glass">
+      {/* SECTION 2: WISH FORM */}
+      <section id="wish-form" className="interaction-zone">
+        <div className="wish-form-card">
           <h3>Blessings for Gauri</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="input-group">
-              <input type="text" placeholder="Your Name" required />
-            </div>
-            <div className="input-group">
-              <textarea placeholder="Write a blessing..." required rows="4"></textarea>
-            </div>
-            <button type="submit" className="btn-solid-teal">Send Love <Heart size={18} fill="white"/></button>
+          <p>Your love is her best gift! Write a message for her special day.</p>
+          <form onSubmit={handleSubmit} className="form-layout">
+            <input type="text" placeholder="Your Name (e.g. Chacha ji)" required className="input-field" />
+            <textarea placeholder="Write your heartfelt blessing..." required rows="4" className="input-field"></textarea>
+            <button type="submit" className="btn-solid">
+              Send Love <Heart size={18} fill="white"/>
+            </button>
           </form>
         </div>
 
-        <div className="wishes-wall-mermaid">
-          <h2>Wishes Wall</h2>
+        {/* SECTION 3: WISHES WALL */}
+        <div className="wishes-wall">
+          <h2 className="section-title">Wishes Wall</h2>
           {loading ? (
-            <p>Loading Blessings...</p>
+            <div className="loading">Gathering blessings...</div>
           ) : (
             <div className="wishes-grid">
               <AnimatePresence>
                 {wishes.map((wish) => (
                   <motion.div 
                     key={wish.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="wish-card-mermaid"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="wish-card"
                   >
+                    <Star size={16} className="star-icon" fill="#8A4FFF" stroke="none" />
                     <p>"{wish.message}"</p>
                     <div className="wish-footer">
                       <strong>- {wish.name}</strong>
@@ -136,6 +117,10 @@ function App() {
           )}
         </div>
       </section>
+
+      <footer className="footer">
+        <p>Created with ❤️ by Papa | anvikajoshi.com</p>
+      </footer>
     </div>
   )
 }

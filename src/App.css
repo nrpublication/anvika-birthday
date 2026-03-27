@@ -1,122 +1,190 @@
-/* Premium Mermaid Theme - Fixed for Vercel */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Crimson+Pro:wght@800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .birthday-container {
-  min-height: 100vh;
-  background: radial-gradient(circle at top right, #e0f7fa, #ffffff);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background: #f8fbff;
   color: #2d3436;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
+/* HERO SECTION */
 .hero-mermaid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px 10%;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 100px 20px;
-  position: relative;
+  gap: 50px;
+  background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
 }
 
-.energetic-badge-purple {
-  background: rgba(138, 79, 255, 0.1);
-  color: #8A4FFF;
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.8rem;
+.hero-content h1 {
+  font-family: 'Crimson Pro', serif;
+  font-size: 4.5rem;
+  line-height: 1.1;
   margin-bottom: 20px;
 }
 
-.hero-mermaid h1 {
-  font-size: clamp(3rem, 8vw, 5rem);
-  margin: 10px 0;
-  color: #159C98; /* Teal Color */
-}
-
-.highlight-gauri {
-  color: #8A4FFF; /* Purple Color */
-}
-
-.purple-gradient-text {
-  background: linear-gradient(90deg, #8A4FFF, #159C98);
+.gradient-text {
+  background: linear-gradient(to right, #8A4FFF, #159C98);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 2.5rem;
-  font-weight: 800;
 }
 
-.hero-mermaid p {
-  max-width: 600px;
-  font-size: 1.2rem;
-  line-height: 1.6;
+.energetic-badge {
+  background: rgba(138, 79, 255, 0.1);
+  color: #8A4FFF;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-info-box {
+  margin: 25px 0;
   color: #636e72;
 }
 
-/* Event Cards */
-.details-grid-premium {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 50px 10%;
+.event-info-box p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
 }
 
-.detail-card-glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid rgba(138, 79, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  text-align: center;
+/* PHOTO FRAME */
+.photo-frame-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.detail-icon {
-  color: #159C98;
-  margin-bottom: 15px;
-}
-
-/* Form Styling */
-.wish-form-card-glass {
+.glowing-circle {
+  width: 350px;
+  height: 350px;
   background: white;
-  max-width: 500px;
-  margin: 50px auto;
+  border-radius: 50%;
+  padding: 12px;
+  border: 4px dashed #8A4FFF;
+  box-shadow: 0 15px 50px rgba(138, 79, 255, 0.2);
+}
+
+.glowing-circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.floating-badge {
+  position: absolute;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.b1 { top: 10%; right: 0; color: #8A4FFF; }
+.b2 { bottom: 10%; left: 0; color: #159C98; }
+
+/* BUTTONS */
+.btn-premium {
+  background: linear-gradient(45deg, #8A4FFF, #159C98);
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(138, 79, 255, 0.3);
+  transition: 0.3s;
+}
+
+.btn-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(138, 79, 255, 0.4); }
+
+/* INTERACTION ZONE */
+.interaction-zone {
+  padding: 80px 10%;
+  background: white;
+}
+
+.wish-form-card {
+  max-width: 600px;
+  margin: 0 auto 80px;
+  background: #fdfcfe;
   padding: 40px;
   border-radius: 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  text-align: center;
+  border: 1px solid #f1e9ff;
 }
 
-.input-group input, .input-group textarea {
+.input-field {
   width: 100%;
   padding: 15px;
-  margin-bottom: 15px;
-  border: 1px solid #dfe6e9;
-  border-radius: 10px;
+  margin-top: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-family: inherit;
 }
 
-.btn-solid-teal {
+.btn-solid {
   background: #159C98;
   color: white;
   width: 100%;
   padding: 15px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 700;
+  margin-top: 20px;
   cursor: pointer;
 }
 
-/* Wishes Wall */
+/* WISHES GRID */
 .wishes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px 10%;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
 }
 
-.wish-card-mermaid {
-  background: #f1f2f6;
-  padding: 20px;
-  border-radius: 15px;
-  border-left: 5px solid #8A4FFF;
+.wish-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.wish-footer {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #f9f9f9;
+  color: #8A4FFF;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px;
+  color: #b2bec3;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero-mermaid { grid-template-columns: 1fr; text-align: center; }
+  .hero-content h1 { font-size: 3rem; }
+  .event-info-box p { justify-content: center; }
+  .photo-frame-container { order: -1; }
+  .glowing-circle { width: 280px; height: 280px; }
 }
